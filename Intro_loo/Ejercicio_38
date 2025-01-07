@@ -1,0 +1,46 @@
+/* Desarrollar un programa que le permita al usuario ingresar un conjunto de 10 valores enteros. 
+Luego se debe imprimir el conjunto que el usuario ingresó, primero en el orden original y luego en 
+el inverso. Por ejemplo, si el usuario ingresa: 12, 43, 5, 26, 7, 98, 1, 32, 18, 9 la salida del programa
+ debe ser la siguiente:
+
+Orden original: 12 43 5 26 7 98 1 32 18 9
+Orden inverso: 9 18 32 1 98 7 26 5 43 12 */
+
+import java.util.Scanner;
+
+public class Ejercicio_38 {
+
+    
+    public int [] ingresarNumero(){
+     Scanner scanner = new Scanner(System.in);
+     int numeros [] = new int[10];
+
+     System.out.println("Ingresar 10 numeros enteros: ");
+     for(int i=0; i < numeros.length; i++){
+        System.out.println("Valor: ");
+        numeros[i] = scanner.nextInt();
+     }
+     return numeros;
+    }
+
+    public void imprimirOrdenOriginal(int[] numeros ){
+     System.out.println("\n Orden original ");
+     for(int numero : numeros){
+        System.out.println(numero + " ");
+     }
+    }
+
+     public void imprimirOrdenInverso(int[] numeros) {
+        System.out.println("\n\nOrden inverso:");
+        for (int i = numeros.length - 1; i >= 0; i--) {
+            System.out.print(numeros[i] + " ");
+        }
+    }
+    
+    public static void main(String[] args) {
+        Ejercicio_38 num = new Ejercicio_38();
+        int[] numeros = num.ingresarNumero(); // Guardo el resultado en una variable
+        num.imprimirOrdenOriginal(numeros); // Paso el array como argumento
+        num.imprimirOrdenInverso(numeros); // Llamo al método para imprimir el orden inverso
+    }
+}

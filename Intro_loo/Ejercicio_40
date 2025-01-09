@@ -1,0 +1,39 @@
+/* Dado un conjunto de número enteros mayores o iguales a 0 y 
+menores que 100 determinar e informar cuántas veces aparece cada
+ uno. El conjunto finaliza con la llegada de un valor negativo */
+
+
+import java.util.Scanner;
+
+public class Ejercicio_40 {
+
+    public static void contarNumeros(){
+            Scanner scanner = new Scanner(System.in);
+            int [] contador = new int[100];
+    
+            System.out.println("Bienvenido \n Ingrese numeros del 0 al 100 \n Ingrese un numero negativo para salir.");
+    
+            while(true){
+               int numero = scanner.nextInt();
+    
+               if(numero >= 0 && numero <= 100){
+                contador[numero]++;
+               }
+               else if(numero < 0){
+                System.out.println("Numero fuera del rango. Debe ingresar un numero del 0 al 100");
+                break;
+               }
+            }
+            System.out.println("\nFrecuencia de cada numero: ");
+            for(int i=0; i < contador.length; i++){
+                if(contador[i] > 0){
+                    System.out.println("\nEl numero: "+i+ "Aparece "+contador[i]+" veces.");
+                }
+            }
+        }
+    
+        public static void main(String[] args) {
+           contarNumeros();
+    }
+    
+} 

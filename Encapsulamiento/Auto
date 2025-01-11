@@ -1,0 +1,28 @@
+public class Auto {
+
+  // atributos del objeto
+  private int ruedas;
+  private boolean enMarcha;
+
+  // constructor: inicializa los atributos del objeto
+  public Auto() {
+    this(4);
+  }
+
+  // otro constructor, sobrecarga de constructores
+  // this: objeto actual
+  public Auto(int ruedas) {
+    this.ruedas = ruedas;
+    this.enMarcha = false;
+  }
+
+  // métodos
+  public void arrancar() {
+    this.enMarcha = true;
+  }
+
+  public String getEstado() {
+    return (this.enMarcha)? "En marcha" : "Parado";
+  }
+
+}

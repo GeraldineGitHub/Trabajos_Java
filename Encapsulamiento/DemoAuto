@@ -1,0 +1,11 @@
+public class DemoAuto {
+
+  public static void main(String [] args) {
+    Auto auto = new Auto();
+    System.out.prinltn(auto.getEstado());
+    auto.arrancar();
+    // auto.enMarcha = false es un error porque está encapsulado
+    System.out.prinltn(auto.getEstado());
+  }
+
+}

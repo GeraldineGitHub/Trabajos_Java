@@ -1,0 +1,100 @@
+class Cubo {
+
+    private double lado;
+    /**
+     * pre : longitudLado es un valor mayor a 0.
+     * post: inicializa el cubo a partir de la longitud de lado dada
+     */
+    public Cubo (double longitudLado) { 
+        if(longitudLado > 0){
+            this.lado = longitudLado;
+        }
+        else 
+        throw new Error("La longitud del lado debe ser mayor a 0");
+    }
+
+    /**
+     * post: devuelve la longitud de todos los lados del cubo
+     */
+    public double obtenerLado() {
+       return this.lado; 
+     }
+    
+    /**
+     * pre : longitudLado es un valor mayor a 0.
+     * post: cambia la longitud de todos los lados del cubo
+     */
+    public void cambiarLado(double longitudLado) { 
+        if(longitudLado > 0){
+            this.lado = longitudLado; 
+        }
+        else 
+        throw new Error("La longitud del lado debe ser mayor a 0");
+    }
+    
+    /**
+     * post: devuelve el área de la superficie de las caras del cubo
+     */
+    public double obtenerAreaCara() { 
+        return this.lado * this.lado;
+    }
+    
+    /**
+     * pre: areaCara es un valor mayor a 0.
+     * post: cambia el área de las caras del cubo
+     */
+    public void cambiarAreaCara(double areaCara) { 
+        if(areaCara > 0){
+            this.lado = Math.sqrt(areaCara);
+          }  
+          else 
+          throw new Error("El área de la cara debe ser mayor a 0"); 
+     }
+
+    /**
+     * post: devuelve el volumen que encierra el cubo
+     */
+    public double obtenerVolumen() {
+        return this.lado * this.lado * this.lado;
+        //return Math.pow(this.lado, 3);
+     }
+
+    /**
+     * pre: volumen es un valor mayor a 0.
+     * post: cambia el volumen del cubo
+     */
+    public void cambiarVolumen(double volumen) {
+        if(volumen > 0){
+            this.lado = Math.cbrt(volumen);
+        }
+        else
+        throw new Error("El volumen debe ser mayor a 0"); 
+     }
+
+     public static void main(String[] args) {
+        Cubo cubito = new Cubo(40);
+
+        // Obtener y mostrar la longitud del lado
+        System.out.println("Lado del cubo: " + cubito.obtenerLado());
+
+        // Cambiar el lado y mostrar el nuevo lado
+        cubito.cambiarLado(50);
+        System.out.println("Nuevo lado del cubo: " + cubito.obtenerLado());
+
+        // Obtener y mostrar el área de una cara
+        double areaCara = cubito.obtenerAreaCara();
+        System.out.println("Área de una cara del cubo: " + areaCara);
+
+        // Cambiar el área de una cara y mostrar el nuevo lado
+        cubito.cambiarAreaCara(64);
+        System.out.println("Nuevo lado del cubo después de cambiar el área de la cara: " + cubito.obtenerLado());
+
+        // Obtener y mostrar el volumen
+        double volumen = cubito.obtenerVolumen();
+        System.out.println("Volumen del cubo: " + volumen);
+
+        // Cambiar el volumen y mostrar el nuevo lado
+        cubito.cambiarVolumen(540);
+        System.out.println("Nuevo lado del cubo después de cambiar el volumen: " + cubito.obtenerLado());
+     }
+}

@@ -1,0 +1,81 @@
+package tarjetaBaja;
+
+public class TarjetaBaja {
+    private double saldo;
+    private int cantidadViajes;
+    private int cantidadViajesColectivo;
+    private int cantidadViajesSubte;
+
+        /**
+         * post: saldo de la Tarjeta en saldoInicial.
+         */
+        public TarjetaBaja(double saldoInicial) { 
+            this.saldo = saldoInicial;
+            this.cantidadViajes = 0;
+            this.cantidadViajesColectivo = 0;
+            this.cantidadViajesSubte = 0;
+        }
+    
+        /**
+         * post: devuelve el saldo actual de la Tarjeta
+         */
+        public double obtenerSaldo() { 
+            return saldo;
+        } 
+    
+        /**
+         * post: agrega el monto al saldo de la Tarjeta.
+         */
+        public void cargar(double monto) { 
+            saldo += monto;
+        }
+    
+        /**
+         * pre : saldo suficiente.
+         * post: utiliza 21.50 del saldo para un viaje en colectivo.
+         */
+        public void pagarViaje(double costo){
+            if(saldo < costo){
+                throw new Error ("SALDO INSUFICIENTE");
+            }
+            else 
+            saldo -= costo;
+            cantidadViajes++;
+        }
+
+        public void pagarViajeEnColectivo() { 
+           pagarViaje(21.50);
+           cantidadViajesColectivo++;
+        }
+        /**
+         * pre : saldo suficiente.
+         * post: utiliza 19.50 del saldo para un viaje en subte. 
+         */
+        public void pagarViajeEnSubte() {
+           pagarViaje(19.50);
+           cantidadViajesSubte++;
+         }
+    
+        /**
+         * post: devuelve la cantidad de viajes realizados.
+         */
+        public int contarViajes() { 
+            return cantidadViajes;
+        }
+       
+
+        /**
+         * post: devuelve la cantidad de viajes en colectivo.
+         */
+        public int contarViajesEnColectivo() {
+            return cantidadViajesColectivo;
+         }
+    
+        /**
+         * post: devuelve la cantidad de viajes en subte.
+         */
+        public int contarViajesEnSubte() { 
+            return cantidadViajesSubte;
+        }
+    }
+

@@ -1,0 +1,54 @@
+package tarjetaBaja;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
+
+public class TarjetaBajaTest {
+@Test 
+   public void obtenerSaldoTest(){
+   TarjetaBaja tarjeta = new TarjetaBaja(4000);
+    assertEquals(4000, tarjeta.obtenerSaldo(), 0.01);
+   }
+
+   @Test 
+   public void cargarSaldoTest(){
+    TarjetaBaja tarjeta = new TarjetaBaja(65);
+    tarjeta.cargar(2000);
+    assertEquals(2065, tarjeta.obtenerSaldo(), 0.01);
+   }
+
+   @Test 
+   public void pagarViajeEnColectivoTest(){
+    TarjetaBaja tarjeta = new TarjetaBaja(50);
+    tarjeta.pagarViajeEnColectivo();
+    assertEquals(28.50, tarjeta.obtenerSaldo(), 0.01);
+    assertEquals(1, tarjeta.contarViajes(), 0.01);
+    assertEquals(1, tarjeta.contarViajesEnColectivo(), 0.01);
+   }
+ @Test 
+ public void pagarViajeEnSubteTest(){
+    TarjetaBaja tarjeta = new TarjetaBaja(100);
+    tarjeta.pagarViajeEnSubte();
+    assertEquals(80.50, tarjeta.obtenerSaldo(), 0.01);
+    assertEquals(1, tarjeta.contarViajes(), 0.01);
+    assertEquals(1, tarjeta.contarViajesEnSubte(), 0.01);
+ }
+
+ @Test
+    void testPagarViajeSinSaldoSuficiente() {
+        TarjetaBaja tarjeta = new TarjetaBaja(10);
+        Error exception = assertThrows(Error.class, tarjeta::pagarViajeEnColectivo);
+        assertEquals("SALDO INSUFICIENTE", exception.getMessage());
+    }
+
+    @Test
+    void testContarViajes() {
+        TarjetaBaja tarjeta = new TarjetaBaja(100);
+        tarjeta.pagarViajeEnColectivo();
+        tarjeta.pagarViajeEnColectivo();
+        tarjeta.pagarViajeEnSubte();
+        assertEquals(3, tarjeta.contarViajes());
+    }
+}

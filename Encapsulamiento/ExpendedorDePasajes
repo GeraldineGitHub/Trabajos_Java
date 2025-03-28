@@ -1,0 +1,75 @@
+class ExpendedorDePasajes {
+
+    private double precioPorKm; 
+    private int totalPasajesVendidos;
+    private double distanciaMax;
+    private double sumaTotalDistancias;
+
+    public ExpendedorDePasajes(double precioPorKm){
+        if(precioPorKm <= 0){
+            throw new Error("El precio por kilometro debe ser mayor a 0"); 
+        }
+        this.precioPorKm = precioPorKm;
+        this.totalPasajesVendidos = 0;
+        this.distanciaMax = 0;
+        this.sumaTotalDistancias = 0;
+    }
+
+    public double venderPasaje(double distanciaEnKm){
+        if(distanciaEnKm < 0){
+            throw new Error("La distancia debe ser mayor a 0");
+        }
+        this.totalPasajesVendidos ++;
+        this.sumaTotalDistancias += distanciaEnKm;
+
+        if (distanciaEnKm > this.distanciaMax) {
+           this.distanciaMax = distanciaEnKm;
+        }
+        return precioPorKm*distanciaEnKm;
+
+    }
+
+    public double venderPasajes(int cantidad, double distanciaEnKm){
+        if(cantidad < 0){
+            throw new Error("La cantidad debe ser mayor a 0");
+        }
+        this.totalPasajesVendidos += cantidad;
+        this.sumaTotalDistancias += distanciaEnKm*cantidad;
+
+        if (distanciaEnKm > this.distanciaMax) {
+            this.distanciaMax = distanciaEnKm;
+         }
+
+        return (precioPorKm*distanciaEnKm)*cantidad;
+    }
+
+    public int contarPasajesVendidos(){
+        return totalPasajesVendidos;
+    }
+
+    public double obtenerDistanciaMaxima(){
+        return distanciaMax;
+    }
+
+    public double calcularDistanciaPromedio(){
+        if (totalPasajesVendidos == 0) {  // Prevención de división por cero
+            return 0;
+        }
+        return sumaTotalDistancias/totalPasajesVendidos;
+    }
+
+    public double calcularVentaTotal(){
+        return sumaTotalDistancias*precioPorKm;
+    }
+
+    public static void main(String[] args) {
+        ExpendedorDePasajes pasaje = new ExpendedorDePasajes(1000);
+
+        System.out.println("Precio de un pasaje vendido: $"+pasaje.venderPasaje(5));
+        System.out.println("Precio de 3 pasajes vendidos: " + pasaje.venderPasajes(3, 10));
+        System.out.println("Total de pasajes vendidos: "+pasaje.contarPasajesVendidos());
+        System.out.println("Distancia máxima vendida: " + pasaje.obtenerDistanciaMaxima()); 
+        System.out.println("Distancia promedio: " + pasaje.calcularDistanciaPromedio());
+    System.out.println("Venta total: " + pasaje.calcularVentaTotal());
+    }
+}

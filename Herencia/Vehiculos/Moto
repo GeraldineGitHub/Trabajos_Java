@@ -1,0 +1,35 @@
+package Vehiculo;
+
+public class Moto extends Vehiculo {
+
+    private boolean tieneAcompañante;
+
+    public Moto(String chofer){
+        super(chofer);
+        this.tieneAcompañante = false; // La moto empieza sin acompañante
+    }
+
+    public void agregarAcompaniante() {
+        if (!tieneAcompañante) { // Si NO tiene acompañante
+            this.tieneAcompañante = true; // Lo agrego
+        } else { // Si YA tenía un acompañante
+            System.out.println("Ya hay un acompañante.");
+        }
+    }
+    
+    public void cambiarChofer(String nuevoChofer){
+        if(!tieneAcompañante){
+           asignarChofer(nuevoChofer); 
+        }
+        else
+        throw new Error("No puede cambiar de chofer porque posee acompañante");
+    }
+
+    public void quitarAcompañante(){
+        if (tieneAcompañante) {
+            this.tieneAcompañante = false;
+        } else {
+            System.out.println("No hay acompañante para quitar.");
+        }
+    }
+}

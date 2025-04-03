@@ -1,0 +1,36 @@
+package Vehiculo;
+
+public class Colectivo extends Vehiculo{
+
+    private int cantidadPasajeros;
+
+    public Colectivo(String chofer){
+        super(chofer);
+        this.cantidadPasajeros = 0;
+    }
+
+    public void subirPasajeros(int cantidad){
+        if(cantidad > 0 && cantidad <= 70){
+            this.cantidadPasajeros += cantidad;
+        }
+        else
+        System.out.println("NO se pueden subir más pasajeros, el colectivo está lleno.");
+    }
+
+    public void bajarPasajero(int cantidad){
+        if(cantidad >=1 && cantidad <= 70 && cantidad <= this.cantidadPasajeros){
+            this.cantidadPasajeros -= cantidad;
+        }
+        else
+        System.out.println("No baja ningun pasajero");
+    }
+
+    public void agregarChofer(String nuevoChofer){
+        if(this.cantidadPasajeros == 0){
+           this.asignarChofer(nuevoChofer); 
+        }
+        else
+        System.out.println("No puede cambiar de chofer porque tiene pasajeros");
+    }
+
+}

@@ -1,0 +1,73 @@
+package Vehiculo;
+
+public class Vehiculo {
+
+    private String chofer;
+    private double kmRecorrido; 
+
+    public Vehiculo(String chofer){
+        this.chofer = chofer;
+        this.kmRecorrido = 0;
+    }
+
+    public String obtenerChofer(){
+        return chofer;
+    }
+
+    public void asignarChofer(String nuevoChofer){
+        this.chofer = nuevoChofer;
+    }
+
+    public double obtenerKmRecorrido(){
+        return kmRecorrido;
+    }
+
+    public void agregarKilometros(double nuevoKm){
+        if(nuevoKm > 0){
+            this.kmRecorrido += nuevoKm;
+        }
+        else 
+        throw new Error("Los Kilometros deben ser mayores a 0");
+    }
+
+    public static void main(String[] args) {
+        Moto moto = new Moto("Juan");
+        System.out.println("Chofer actual de la moto: "+moto.obtenerChofer());
+        moto.agregarKilometros(5);
+
+        moto.cambiarChofer("Pepe");
+        System.out.println("Nuevo chofer de la moto: "+moto.obtenerChofer());
+        moto.agregarKilometros(12);
+
+        moto.agregarAcompaniante();
+        //moto.cambiarChofer("Pablo");
+
+        moto.quitarAcompañante();
+        moto.cambiarChofer("Felipe");
+        System.out.println("Chofer actual de la moto: "+moto.obtenerChofer());
+        moto.agregarKilometros(54);
+        System.out.println("Kilometros recorridos de la moto : KM "+moto.obtenerKmRecorrido());
+
+        Colectivo colectivo = new Colectivo("Cristian");
+        colectivo.obtenerChofer();
+        colectivo.agregarKilometros(3);
+        System.out.println("-----------------------------------------------------------------------------");
+        System.out.println("Chofer actual del colectivo: "+colectivo.obtenerChofer());
+
+        colectivo.agregarChofer("Maria");
+        System.out.println("Chofer actual del colectivo: "+colectivo.obtenerChofer());
+        colectivo.agregarKilometros(9);
+
+        colectivo.subirPasajeros(5);
+        colectivo.subirPasajeros(9);
+        colectivo.subirPasajeros(4);
+        colectivo.subirPasajeros(2);
+        //colectivo.bajarPasajero(1);
+        colectivo.agregarChofer("Rita");
+        System.out.println("Chofer actual del colectivo: "+colectivo.obtenerChofer());
+        colectivo.bajarPasajero(20);
+        colectivo.agregarChofer("Rita");
+        System.out.println("Chofer actual del colectivo: "+colectivo.obtenerChofer());
+        System.out.println("Kilometros recorridos del colectivo: KM "+colectivo.obtenerKmRecorrido());
+    }
+}
